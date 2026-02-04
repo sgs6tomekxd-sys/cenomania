@@ -15,12 +15,18 @@ export const GameCard: React.FC<GameCardProps> = ({ item, onGuess, streak, coins
   const [hasError, setHasError] = useState(false);
   const [activeHint, setActiveHint] = useState<string | null>(null);
 
+  const inputRef = useRef<HTMLInputElement>(null);
+
   // Reset input and image when item changes
   useEffect(() => {
     setGuess('');
     setImgSrc(item.imageUrl);
     setHasError(false);
     setActiveHint(null);
+    // Auto-focus input when item changes
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
   }, [item.id, item.imageUrl]);
 
   const useHint = (type: 'range' | 'digit') => {
@@ -40,10 +46,33 @@ export const GameCard: React.FC<GameCardProps> = ({ item, onGuess, streak, coins
     }
   };
 
+  const formatNumber = (value: string) => {
+    // Remove all non-digit and non-comma characters
+    let v = value.replace(/[^\d,]/g, '');
+    const parts = v.split(',');
+    
+    // Ensure only one comma
+    if (parts.length > 2) {
+        v = parts[0] + ',' + parts.slice(1).join('');
+    }
+    
+    // Add dots as thousand separators to the integer part
+    const integerPart = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    
+    return parts.length > 1 ? integerPart + ',' + parts[1] : integerPart;
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    // Remove existing dots to get raw value for re-formatting
+    const raw = val.replace(/\./g, '');
+    setGuess(formatNumber(raw));
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Remove spaces and replace comma with dot
-    const cleanGuess = guess.replace(/\s/g, '').replace(',', '.');
+    // Remove spaces and dots, replace comma with dot for parsing
+    const cleanGuess = guess.replace(/\s/g, '').replace(/\./g, '').replace(',', '.');
     const numGuess = parseFloat(cleanGuess);
     if (!isNaN(numGuess)) {
       onGuess(numGuess);
@@ -68,23 +97,31 @@ export const GameCard: React.FC<GameCardProps> = ({ item, onGuess, streak, coins
       )}
 
       <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden border border-gray-100 dark:border-gray-700 transition-colors duration-300">
-        <div className="relative h-72 w-full bg-gray-50 dark:bg-gray-900 flex items-center justify-center overflow-hidden group">
+        <div className="relative h-72 w-full bg-gray-100 dark:bg-gray-900 flex items-center justify-center overflow-hidden group">
           {!hasError ? (
-            <img 
-              src={imgSrc} 
-              alt={item.name} 
-              onError={handleImageError}
-              referrerPolicy="no-referrer"
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
+            <>
+               {/* Tło rozmyte (wypełniacz) */}
+               <div 
+                 className="absolute inset-0 bg-cover bg-center blur-xl opacity-60 dark:opacity-40 scale-110 transition-transform duration-700 group-hover:scale-125"
+                 style={{ backgroundImage: `url("${imgSrc}")` }}
+               />
+               {/* Właściwe zdjęcie (nieucięte) */}
+               <img 
+                 src={imgSrc} 
+                 alt={item.name} 
+                 onError={handleImageError}
+                 referrerPolicy="no-referrer"
+                 className="relative z-10 w-full h-full object-contain p-2 transition-transform duration-700 group-hover:scale-105 drop-shadow-xl"
+               />
+            </>
           ) : (
-            <div className="w-full h-full flex flex-col items-center justify-center bg-gray-200 dark:bg-gray-800 text-gray-400 dark:text-gray-500 p-4 text-center">
+            <div className="relative z-10 w-full h-full flex flex-col items-center justify-center bg-gray-200 dark:bg-gray-800 text-gray-400 dark:text-gray-500 p-4 text-center">
               <span className="text-4xl mb-2">📷</span>
               <span className="text-sm font-bold">Brak zdjęcia</span>
               <span className="text-xs mt-1 opacity-70">{item.name}</span>
             </div>
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 pointer-events-none"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 pointer-events-none z-20"></div>
           
           <div className="absolute top-4 right-4 z-20">
              <div className="bg-white/20 backdrop-blur-xl px-6 py-3 rounded-2xl border border-white/30 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-300">
@@ -150,13 +187,14 @@ export const GameCard: React.FC<GameCardProps> = ({ item, onGuess, streak, coins
               </label>
               <div className="relative rounded-2xl shadow-sm transition-all focus-within:ring-4 focus-within:ring-blue-500/20">
                 <input
+                  ref={inputRef}
                   type="text"
                   name="price-guess"
                   id="price-guess"
                   className="block w-full rounded-2xl border-2 border-gray-200 dark:border-gray-600 pl-6 pr-16 py-4 text-3xl font-bold bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:border-blue-500 focus:outline-none transition-colors"
-                  placeholder="0.00"
+                  placeholder="0"
                   value={guess}
-                  onChange={(e) => setGuess(e.target.value)}
+                  onChange={handleInputChange}
                   autoFocus
                   autoComplete="off"
                 />

@@ -20,7 +20,7 @@ export const gameItems: GameItem[] = [
     price: 3500,
     currency: 'PLZ (Stare Zł)',
     category: 'food',
-    imageUrl: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/cola-1990.jpg',
     description: 'Oryginalny napój gazowany w puszce. Symbol zachodniego luksusu dostępny w każdym kiosku.',
     funFact: 'W 1990 roku Polska przechodziła transformację. Puszka Coli była towarem luksusowym, kosztującym tyle co bochenek chleba. 3500 PLZ to po denominacji 0,35 PLN.'
   },
@@ -31,7 +31,7 @@ export const gameItems: GameItem[] = [
     price: 3.99,
     currency: 'PLN',
     category: 'food',
-    imageUrl: 'https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/cola-2005.jpg',
     description: 'Rodzinna butelka najpopularniejszego napoju na świecie. Obowiązkowy element niedzielnego obiadu.',
     funFact: 'W 2005 roku Polska była już w UE. Duża butelka Coli była standardem na stołach.'
   },
@@ -42,7 +42,7 @@ export const gameItems: GameItem[] = [
     price: 0.60,
     currency: 'PLN',
     category: 'food',
-    imageUrl: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/chleb-1995.jpg',
     description: 'Tradycyjny chleb pszenno-żytni z lokalnej piekarni. Podstawa polskiego śniadania.',
     funFact: 'Rok 1995 to rok denominacji (skreślenia 4 zer). Chleb kosztował grosze w porównaniu do dzisiejszych cen.'
   },
@@ -53,7 +53,7 @@ export const gameItems: GameItem[] = [
     price: 4.50,
     currency: 'PLN',
     category: 'food',
-    imageUrl: 'https://images.unsplash.com/photo-1598373182133-52452f7691e8?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/chleb-2023.jpg',
     description: 'Świeży bochenek chleba z chrupiącą skórką. Cena obejmuje rosnące koszty energii i zboża.',
     funFact: 'Inflacja w 2023 roku sprawiła, że ceny pieczywa drastycznie wzrosły.'
   },
@@ -64,7 +64,7 @@ export const gameItems: GameItem[] = [
     price: 2.50,
     currency: 'PLN',
     category: 'food',
-    imageUrl: 'https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/maslo-2000.jpg',
     description: 'Prawdziwe masło ekstra, 82% tłuszczu. Alternatywa dla popularnych wtedy margaryn.',
     funFact: 'W 2000 roku masło było stosunkowo tanie, a rynek zalewały margaryny.'
   },
@@ -75,7 +75,7 @@ export const gameItems: GameItem[] = [
     price: 7.99,
     currency: 'PLN',
     category: 'food',
-    imageUrl: 'https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/maslo-2022.jpg',
     description: 'Kostka masła, która stała się symbolem drożyzny w sklepach spożywczych.',
     funFact: 'Słynne "paragony grozy" często dotyczyły właśnie masła, którego cena zbliżała się do 10 zł.'
   },
@@ -86,7 +86,7 @@ export const gameItems: GameItem[] = [
     price: 1.20,
     currency: 'PLN',
     category: 'food',
-    imageUrl: 'https://images.unsplash.com/photo-1629219460068-16c805370d06?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/snickers-1998.jpg',
     description: 'Baton czekoladowy z karmelem i orzeszkami. Reklamowany jako sposób na "wielkiego głoda".',
     funFact: 'Słodycze z zachodu w latach 90. były symbolem nowoczesności.'
   },
@@ -97,7 +97,7 @@ export const gameItems: GameItem[] = [
     price: 1.20,
     currency: 'PLN',
     category: 'food',
-    imageUrl: 'https://images.unsplash.com/photo-1563636619-e9143da7973b?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/mleko-1995.jpg',
     description: 'Mleko pasteryzowane, często sprzedawane w charakterystycznych foliowych workach.',
     funFact: 'W latach 90. mleko często sprzedawano jeszcze w foliowych workach.'
   },
@@ -108,7 +108,7 @@ export const gameItems: GameItem[] = [
     price: 3.99,
     currency: 'PLN',
     category: 'food',
-    imageUrl: 'https://images.unsplash.com/photo-1563636619-e9143da7973b?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/mleko-2023.jpg',
     description: 'Mleko UHT w kartonie lub butelce. Podstawowy produkt w każdym domu.',
     funFact: 'Ceny nabiału w 2023 roku były pod silną presją inflacyjną.'
   },
@@ -119,7 +119,7 @@ export const gameItems: GameItem[] = [
     price: 5.50,
     currency: 'PLN',
     category: 'food',
-    imageUrl: 'https://images.unsplash.com/photo-1581441363689-1f3c3c414635?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/cukier-2011.jpg',
     description: 'Standardowe opakowanie cukru kryształu. Niezbędny do herbaty i przetworów.',
     funFact: 'W 2011 roku wybuchła panika cukrowa, a ceny cukru drastycznie wzrosły w krótkim czasie.'
   },
@@ -130,7 +130,7 @@ export const gameItems: GameItem[] = [
     price: 25000,
     currency: 'PLZ (Stare Zł)',
     category: 'food',
-    imageUrl: 'https://images.unsplash.com/photo-1596547608828-569b93551523?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/wodka-1990.jpg',
     description: 'Pół litra czystej wódki, popularna "połówka". Często używana jako środek płatniczy.',
     funFact: 'W czasach PRL i transformacji wódka była nieoficjalną walutą wymienną za usługi.'
   },
@@ -141,7 +141,7 @@ export const gameItems: GameItem[] = [
     price: 32.00,
     currency: 'PLN',
     category: 'food',
-    imageUrl: 'https://images.unsplash.com/photo-1596547608828-569b93551523?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/wodka-2023.jpg',
     description: 'Standardowa butelka wódki ze średniej półki cenowej.',
     funFact: 'Wzrost akcyzy regularnie podnosi ceny alkoholu w Polsce.'
   },
@@ -152,7 +152,7 @@ export const gameItems: GameItem[] = [
     price: 9.99,
     currency: 'PLN',
     category: 'food',
-    imageUrl: 'https://images.unsplash.com/photo-1506976785307-8732e854ad03?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/jajka-2023.jpg',
     description: 'Opakowanie 10 jaj kurzych, klasa L. Cena zależna od chowu, tu standardowy.',
     funFact: 'Inflacja w 2023 roku mocno dotknęła produkty podstawowe, w tym jajka.'
   },
@@ -163,7 +163,7 @@ export const gameItems: GameItem[] = [
     price: 3.50,
     currency: 'PLN',
     category: 'food',
-    imageUrl: 'https://images.unsplash.com/photo-1506976785307-8732e854ad03?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/jajka-2000.jpg',
     description: 'Dziesięć świeżych jajek. Podstawa jajecznicy na śniadanie.',
     funFact: 'Przed wejściem do UE ceny jaj były znacznie niższe, podobnie jak wymogi hodowlane.'
   },
@@ -174,7 +174,7 @@ export const gameItems: GameItem[] = [
     price: 9.00,
     currency: 'PLN',
     category: 'food',
-    imageUrl: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/bigmac-2010.jpg',
     description: 'Słynna kanapka z dwoma kotletami wołowymi, sosem, sałatą, serem, ogórkiem i cebulą.',
     funFact: 'Indeks Big Maca to popularny wskaźnik ekonomiczny. W 2010 płaciliśmy za niego niecałą "dychę".'
   },
@@ -187,7 +187,7 @@ export const gameItems: GameItem[] = [
     price: 1.60,
     currency: 'PLN',
     category: 'automotive',
-    imageUrl: 'https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/paliwo-1995.jpg',
     description: 'Jeden litr benzyny bezołowiowej 95 oktanów. Niezbędna do napędzania Poloneza czy Malucha.',
     funFact: 'Zaraz po denominacji paliwo wydawało się tanie, ale średnia pensja wynosiła wtedy ok. 700 zł.'
   },
@@ -198,7 +198,7 @@ export const gameItems: GameItem[] = [
     price: 3.85,
     currency: 'PLN',
     category: 'automotive',
-    imageUrl: 'https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/paliwo-2005.jpg',
     description: 'Paliwo na stacji benzynowej. Cena zaczyna być odczuwalna dla kierowców.',
     funFact: 'Ceny paliw zaczęły rosnąć wraz z sytuacją na Bliskim Wschodzie.'
   },
@@ -209,7 +209,7 @@ export const gameItems: GameItem[] = [
     price: 5.70,
     currency: 'PLN',
     category: 'automotive',
-    imageUrl: 'https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/paliwo-2012.jpg',
     description: 'Benzyna "Eurosuper 95". Magiczna granica 6 złotych jest blisko.',
     funFact: 'W 2012 roku ceny paliw osiągnęły ówczesny rekord, zbliżając się do 6 zł.'
   },
@@ -220,7 +220,7 @@ export const gameItems: GameItem[] = [
     price: 7.95,
     currency: 'PLN',
     category: 'automotive',
-    imageUrl: 'https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/paliwo-2022.jpg',
     description: 'Drogie tankowanie w cieniu kryzysu energetycznego.',
     funFact: 'Wybuch wojny na Ukrainie spowodował skok cen paliw, momentami przekraczając 8 zł.'
   },
@@ -233,7 +233,7 @@ export const gameItems: GameItem[] = [
     price: 1200,
     currency: 'PLN',
     category: 'tech',
-    imageUrl: 'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/iphone-2008.jpg',
     description: 'Rewolucyjny smartfon od Apple z dostępem do szybkiego internetu 3G.',
     funFact: 'iPhone 3G wchodził do Polski w ofertach operatorów (Era, Orange). Cena bez umowy była zaporowa.'
   },
@@ -244,7 +244,7 @@ export const gameItems: GameItem[] = [
     price: 4699,
     currency: 'PLN',
     category: 'tech',
-    imageUrl: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/iphone-2023.jpg',
     description: 'Najnowszy smartfon Apple ze złączem USB-C i Dynamic Island.',
     funFact: 'Ceny flagowców Apple w Polsce poszybowały w górę ze względu na kurs dolara.'
   },
@@ -255,7 +255,7 @@ export const gameItems: GameItem[] = [
     price: 2699,
     currency: 'PLN',
     category: 'tech',
-    imageUrl: 'https://images.unsplash.com/photo-1507457379470-08b800bebc6b?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/ps2-2000.jpg',
     description: 'Konsola nowej generacji od Sony. Odtwarzacz DVD i niesamowita grafika 3D.',
     funFact: 'Na premierę PS2 kosztowało fortunę – ponad 3 średnie krajowe pensje!'
   },
@@ -266,7 +266,7 @@ export const gameItems: GameItem[] = [
     price: 1200,
     currency: 'PLN',
     category: 'tech',
-    imageUrl: 'https://images.unsplash.com/photo-1593305841991-05c297bb45ec?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/tv-1995.jpg',
     description: 'Solidny telewizor kineskopowy (CRT) z pilotem. Okno na świat w każdym salonie.',
     funFact: 'Telewizor kineskopowy (CRT) był centrum domowej rozrywki. 1200 zł to były prawie dwie pensje.'
   },
@@ -277,7 +277,7 @@ export const gameItems: GameItem[] = [
     price: 800,
     currency: 'PLN',
     category: 'tech',
-    imageUrl: 'https://images.unsplash.com/photo-1570572127365-27668636b07d?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/nokia-2000.jpg',
     description: 'Niezniszczalny telefon komórkowy z grą Snake i wymiennymi obudowami.',
     funFact: 'Legendarna Nokia 3310 była marzeniem każdego, choć początkowo wcale nie była tania bez abonamentu.'
   },
@@ -290,7 +290,7 @@ export const gameItems: GameItem[] = [
     price: 35000000,
     currency: 'PLZ (Stare Zł)',
     category: 'automotive',
-    imageUrl: 'https://images.unsplash.com/photo-1634563453982-1d5421c6b840?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/maluch-1990.jpg',
     description: 'Mały Fiat z polskiej fabryki. Ciasny, głośny, ale własny.',
     funFact: 'W 1990 r. FSM wyprodukowała 150 tys. sztuk, ale popyt spadał na rzecz aut z zachodu. Cena 35 mln zł to równowartość dzisiejszych ~3500 zł, choć wtedy była to fortuna.'
   },
@@ -301,7 +301,7 @@ export const gameItems: GameItem[] = [
     price: 18500,
     currency: 'PLN',
     category: 'automotive',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/8/82/FSO_Polonez_Caro_1.6_GLE_-_ty%C5%82_%281%29.jpg',
+    imageUrl: '/images/polonez-1995.jpg',
     description: 'Nowoczesna wersja Poloneza z szerszym torem kół i nowym wnętrzem.',
     funFact: 'W połowie lat 90. był to hit sprzedaży (ok. 80 tys. sztuk rocznie). Wersja Caro uchodziła za "luksusową" limuzynę dla przeciętnego Polaka.'
   },
@@ -312,7 +312,7 @@ export const gameItems: GameItem[] = [
     price: 115000,
     currency: 'PLN',
     category: 'automotive',
-    imageUrl: 'https://images.unsplash.com/photo-1632247449557-41a629340578?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/golf-2023.jpg',
     description: 'Kompaktowy hatchback w wersji podstawowej. Ikona niemieckiej motoryzacji.',
     funFact: 'Koszt produkcji kompaktu to ok. 60-70% ceny netto. Golf stracił pozycję lidera w Europie na rzecz tańszych aut jak Dacia Sandero.'
   },
@@ -325,7 +325,7 @@ export const gameItems: GameItem[] = [
     price: 20500,
     currency: 'PLN',
     category: 'automotive',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Daewoo_Tico_SX_PL.jpg/640px-Daewoo_Tico_SX_PL.jpg',
+    imageUrl: '/images/tico-1996.jpg',
     description: 'Małe, zwrotne auto miejskie. Marzenie wielu rodzin przesiadających się z Malucha.',
     funFact: 'Tico było hitem sprzedaży dzięki niskiej cenie i 5-drzwiowemu nadwoziu. Silnik 0.8 l był zaskakująco dynamiczny.'
   },
@@ -336,7 +336,7 @@ export const gameItems: GameItem[] = [
     price: 33500,
     currency: 'PLN',
     category: 'automotive',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Daewoo_Lanos_sedan_red_pl.jpg/640px-Daewoo_Lanos_sedan_red_pl.jpg',
+    imageUrl: '/images/lanos-1998.jpg',
     description: 'Nowoczesny kompakt z Korei produkowany na Żeraniu. Następca Poloneza.',
     funFact: 'Lanos zmotoryzował polską klasę średnią w latach 90. Hasło reklamowe "Lanos - Tego nam było trzeba" znał każdy.'
   },
@@ -347,7 +347,7 @@ export const gameItems: GameItem[] = [
     price: 48500,
     currency: 'PLN',
     category: 'automotive',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Skoda_Octavia_I_front_20100425.jpg/640px-Skoda_Octavia_I_front_20100425.jpg',
+    imageUrl: '/images/skoda-2000.jpg',
     description: 'Solidny liftback zbudowany na technologii Volkswagena. Olbrzymi bagażnik.',
     funFact: 'Octavia stała się ulubionym autem flotowym w Polsce, budując prestiż marki Skoda jako "tańszego Passata".'
   },
@@ -358,7 +358,7 @@ export const gameItems: GameItem[] = [
     price: 50000000,
     currency: 'PLZ (Stare Zł)',
     category: 'automotive',
-    imageUrl: 'https://images.unsplash.com/photo-1549529947-6e42b826b000?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/fiat-125p-1990.jpg',
     description: 'Legendarny "Duży Fiat" u schyłku produkcji. Przestarzały, ale dostępny.',
     funFact: 'W 1990 roku produkcja dobiegała końca (zakończono w 1991). Jakość wykonania była fatalna, ale auto wciąż miało wiernych fanów.'
   },
@@ -369,7 +369,7 @@ export const gameItems: GameItem[] = [
     price: 39900,
     currency: 'PLN',
     category: 'automotive',
-    imageUrl: 'https://images.unsplash.com/photo-1621007947382-bb3c3968e3bb?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/duster-2010.jpg',
     description: 'Pierwszy tani SUV na rynku. Szokująco niska cena wersji podstawowej.',
     funFact: 'Cena 39 900 zł dotyczyła wersji "gołej" (czarne zderzaki, brak klimy), ale przyciągnęła do salonów tłumy klientów.'
   },
@@ -380,7 +380,7 @@ export const gameItems: GameItem[] = [
     price: 15000,
     currency: 'USD',
     category: 'automotive',
-    imageUrl: 'https://images.unsplash.com/photo-1622198906969-45d27282c611?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/mercedes-1990.jpg',
     description: 'Symbol statusu i luksusu. Niezniszczalna limuzyna marzeń.',
     funFact: 'W 1990 roku ceny aut zachodnich podawano w dolarach. 15 tys. USD to była fortuna, za którą można było kupić kilka mieszkań.'
   },
@@ -391,7 +391,7 @@ export const gameItems: GameItem[] = [
     price: 49900,
     currency: 'PLN',
     category: 'automotive',
-    imageUrl: 'https://images.unsplash.com/photo-1616455579100-2ceaa4eb2d37?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/focus-1999.jpg',
     description: 'Rewolucyjny design "New Edge" i świetne prowadzenie. Samochód Roku.',
     funFact: 'Focus zszokował rynek swoim wyglądem, zrywając z nudą modelu Escort. Tylne zawieszenie wielowahaczowe było wzorem w klasie.'
   },
@@ -402,7 +402,7 @@ export const gameItems: GameItem[] = [
     price: 65000000,
     currency: 'PLZ (Stare Zł)',
     category: 'automotive',
-    imageUrl: 'https://images.unsplash.com/photo-1533512930237-7740f925b7a5?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/ursus-1990.jpg',
     description: 'Kultowy polski ciągnik rolniczy, "ciiapek". Koń roboczy polskiej wsi.',
     funFact: 'Ursus C-330 produkowano do 1993 roku. Był prosty, trwały i każdy mechanik potrafił go naprawić młotkiem.'
   },
@@ -413,7 +413,7 @@ export const gameItems: GameItem[] = [
     price: 280,
     currency: 'PLN',
     category: 'automotive',
-    imageUrl: 'https://images.unsplash.com/photo-1485965120184-e224f723d621?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/wigry-1995.jpg',
     description: 'Składany rower miejski. Obiekt pożądania każdego dziecka na komunię.',
     funFact: 'Rower składak był idealny do małych mieszkań w blokach. Można go było "złożyć w pół" i schować na balkonie.'
   },
@@ -424,7 +424,7 @@ export const gameItems: GameItem[] = [
     price: 3500000,
     currency: 'PLZ (Stare Zł)',
     category: 'automotive',
-    imageUrl: 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/motorynka-1990.jpg',
     description: 'Miniaturowy motorower dla młodzieży. Marzenie każdego nastolatka.',
     funFact: 'Motorynka miała silnik 50cm3 i 2 biegi. Dźwięk jej silnika rozpoznawał każdy na osiedlu.'
   },
@@ -438,7 +438,7 @@ export const gameItems: GameItem[] = [
     price: 4500,
     currency: 'PLN',
     category: 'housing',
-    imageUrl: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/mieszkanie-waw-2005.jpg',
     description: 'Cena za metr kwadratowy mieszkania w stolicy. Przed wielkim boomem kredytowym.',
     funFact: 'W 2005 roku ceny mieszkań w Warszawie zaczynały rosnąć, ale 4500 zł/m² wydaje się dziś okazją.'
   },
@@ -449,7 +449,7 @@ export const gameItems: GameItem[] = [
     price: 14500,
     currency: 'PLN',
     category: 'housing',
-    imageUrl: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/mieszkanie-waw-2023.jpg',
     description: 'Średnia cena transakcyjna za metr kwadratowy w Warszawie.',
     funFact: 'Ceny nieruchomości w stolicy wystrzeliły, czyniąc zakup mieszkania trudnym dla młodych.'
   },
@@ -460,7 +460,7 @@ export const gameItems: GameItem[] = [
     price: 15000,
     currency: 'PLN',
     category: 'housing',
-    imageUrl: 'https://images.unsplash.com/photo-1534567222168-5527a4d8d386?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/garaz-2000.jpg',
     description: 'Własny garaż w bloku lub wolnostojący w średniej wielkości mieście.',
     funFact: 'Garaż był dobrem luksusowym dla posiadaczy aut, często służył też za warsztat.'
   },
@@ -473,7 +473,7 @@ export const gameItems: GameItem[] = [
     price: 1.00,
     currency: 'PLN',
     category: 'other',
-    imageUrl: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/gazeta-1995.jpg',
     description: 'Jeden egzemplarz najpopularniejszego dziennika w Polsce.',
     funFact: 'Prasa papierowa była głównym źródłem informacji. Złotówka za gazetę to była standardowa cena.'
   },
@@ -484,7 +484,7 @@ export const gameItems: GameItem[] = [
     price: 12.00,
     currency: 'PLN',
     category: 'other',
-    imageUrl: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/bilet-kino-2000.jpg',
     description: 'Bilet normalny na seans wieczorny w kinie miejskim.',
     funFact: 'Wyjście do kina w 2000 roku było tańsze, ale sieć multipleksów dopiero się rozwijała.'
   },
@@ -495,7 +495,7 @@ export const gameItems: GameItem[] = [
     price: 6.50,
     currency: 'PLN',
     category: 'other',
-    imageUrl: 'https://images.unsplash.com/photo-1527763660528-768d6c5432d6?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/papierosy-2005.jpg',
     description: 'Paczka 20 papierosów popularnej marki zachodniej.',
     funFact: 'Akcyza na wyroby tytoniowe była znacznie niższa przed pełną integracją z wymogami UE.'
   },
@@ -506,7 +506,7 @@ export const gameItems: GameItem[] = [
     price: 4.35,
     currency: 'PLN',
     category: 'other',
-    imageUrl: 'https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/dolar-2000.jpg',
     description: 'Cena jednego dolara amerykańskiego w kantorze.',
     funFact: 'Na przełomie tysiącleci dolar był bardzo drogi, kosztując ponad 4 złote.'
   },
@@ -517,7 +517,7 @@ export const gameItems: GameItem[] = [
     price: 2.10,
     currency: 'PLN',
     category: 'other',
-    imageUrl: 'https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/dolar-2008.jpg',
     description: 'Cena jednego dolara amerykańskiego w czasach silnej złotówki.',
     funFact: 'W 2008 roku złoty był rekordowo silny, a dolar kosztował niewiele ponad 2 złote.'
   },
@@ -528,7 +528,7 @@ export const gameItems: GameItem[] = [
     price: 702,
     currency: 'PLN',
     category: 'other',
-    imageUrl: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/srednia-1995.jpg',
     description: 'Przeciętne miesięczne wynagrodzenie brutto w gospodarce narodowej.',
     funFact: 'W 1995 roku 700 zł brutto to była średnia pensja. Dziś wydaje się to kieszonkowym.'
   },
@@ -539,7 +539,7 @@ export const gameItems: GameItem[] = [
     price: 7379,
     currency: 'PLN',
     category: 'other',
-    imageUrl: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/srednia-2023.jpg',
     description: 'Przeciętne miesięczne wynagrodzenie brutto w Polsce.',
     funFact: 'Średnia krajowa nominalnie wzrosła 10-krotnie od połowy lat 90.'
   },
@@ -552,7 +552,7 @@ export const gameItems: GameItem[] = [
     price: 250,
     currency: 'PLN',
     category: 'tech',
-    imageUrl: 'https://images.unsplash.com/photo-1616422363577-49f33b5c659d?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/walkman-1995.jpg',
     description: 'Przenośny odtwarzacz kasetowy. Symbol wolności muzycznej lat 90.',
     funFact: 'W 1995 roku za markowego Walkmana trzeba było zapłacić około 1/3 średniej pensji. Funkcja "Mega Bass" była absolutnym hitem.'
   },
@@ -563,7 +563,7 @@ export const gameItems: GameItem[] = [
     price: 450000,
     currency: 'PLZ (Stare Zł)',
     category: 'tech',
-    imageUrl: 'https://images.unsplash.com/photo-1555617766-c94804975da3?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/pegasus-1993.jpg',
     description: 'Polska legenda bazarów. Klon japońskiego Famicoma (NES).',
     funFact: 'Pegasus był najpopularniejszą konsolą w Polsce lat 90. Gry kupowało się na żółtych kartridżach na bazarze.'
   },
@@ -574,7 +574,7 @@ export const gameItems: GameItem[] = [
     price: 55,
     currency: 'PLN',
     category: 'tech',
-    imageUrl: 'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/tamagotchi-1997.jpg',
     description: 'Jajowate urządzenie z cyfrowym zwierzątkiem, które trzeba karmić.',
     funFact: 'Szał na Tamagotchi był tak wielki, że w niektórych szkołach zakazywano przynoszenia ich na lekcje, bo uczniowie "karmili" je w czasie zajęć.'
   },
@@ -585,7 +585,7 @@ export const gameItems: GameItem[] = [
     price: 349,
     currency: 'PLN',
     category: 'tech',
-    imageUrl: 'https://images.unsplash.com/photo-1599839575945-a9e5af0c3fa5?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/gameboy-1998.jpg',
     description: 'Przenośna konsola Nintendo z kolorowym ekranem.',
     funFact: 'Game Boy Color zrewolucjonizował rynek dzięki grom takim jak Pokémon Gold i Silver. Działał na dwie baterie AA.'
   },
@@ -596,7 +596,7 @@ export const gameItems: GameItem[] = [
     price: 950,
     currency: 'PLN',
     category: 'tech',
-    imageUrl: 'https://images.unsplash.com/photo-1578822552762-3c5830eb73eb?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/vhs-1995.jpg',
     description: 'Centrum domowej rozrywki. Pozwalał oglądać filmy z wypożyczalni.',
     funFact: 'Dobrej klasy magnetowid 4-głowicowy kosztował ponad 1000 zł, czyli więcej niż wynosiła średnia pensja (ok. 700 zł).'
   },
@@ -607,7 +607,7 @@ export const gameItems: GameItem[] = [
     price: 2200,
     currency: 'PLN',
     category: 'tech',
-    imageUrl: 'https://images.unsplash.com/photo-1611532736579-6b158f0e9dcd?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/ipod-2002.jpg',
     description: '"1000 piosenek w Twojej kieszeni". Biały odtwarzacz z mechanicznym kółkiem.',
     funFact: 'W Polsce iPod był towarem ekstremalnie luksusowym. Jego cena przekraczała ówczesną średnią krajową (ok. 2100 zł).'
   },
@@ -618,7 +618,7 @@ export const gameItems: GameItem[] = [
     price: 30,
     currency: 'PLN',
     category: 'tech',
-    imageUrl: 'https://images.unsplash.com/photo-1562243061-2545d97f2675?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/dyskietki-1995.jpg',
     description: 'Paczka nośników danych. Każda dyskietka mieściła 1.44 MB.',
     funFact: 'Dziś jedno zdjęcie ze smartfona zajmuje więcej miejsca niż cała paczka dyskietek. Służyły głównie do przenoszenia dokumentów i małych gier.'
   },
@@ -629,7 +629,7 @@ export const gameItems: GameItem[] = [
     price: 80,
     currency: 'PLN',
     category: 'tech',
-    imageUrl: 'https://images.unsplash.com/photo-1517260739337-6799d239ce83?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/aparat-1995.jpg',
     description: 'Prosty aparat kompaktowy typu "małpka".',
     funFact: 'Zdjęcia nie były widoczne od razu – trzeba było zanieść kliszę do fotografa i czekać na wywołanie, płacąc za każdą odbitkę.'
   },
@@ -642,7 +642,7 @@ export const gameItems: GameItem[] = [
     price: 7199,
     currency: 'PLN',
     category: 'tech',
-    imageUrl: 'https://images.unsplash.com/photo-1696446701796-da61225697cc?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/iphone15promax-2023.jpg',
     description: 'Flagowy smartfon Apple z tytanową obudową.',
     funFact: 'Cena startowa 7199 zł to prawie równowartość średniej krajowej brutto w 2023 roku.'
   },
@@ -653,7 +653,7 @@ export const gameItems: GameItem[] = [
     price: 9000,
     currency: 'PLN',
     category: 'tech',
-    imageUrl: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/rtx4090-2023.jpg',
     description: 'Do niedawna najpotężniejsza karta graficzna (teraz zdetronizowana przez serię 5090).',
     funFact: 'Karta ta jest tak duża, że wielu graczy musiało wymieniać obudowy komputerowe, aby ją zmieścić. Pobiera też ogromne ilości prądu.'
   },
@@ -664,7 +664,7 @@ export const gameItems: GameItem[] = [
     price: 19000,
     currency: 'PLN',
     category: 'tech',
-    imageUrl: 'https://images.unsplash.com/photo-1709592968377-628461763784?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/visionpro-2024.jpg',
     description: 'Gogle "komputeryzacji przestrzennej" od Apple.',
     funFact: 'Urządzenie kosztuje w USA 3499 dolarów. W Polsce cena z importu sięgała nawet 20 tysięcy złotych.'
   },
@@ -675,7 +675,7 @@ export const gameItems: GameItem[] = [
     price: 3999,
     currency: 'PLN',
     category: 'other',
-    imageUrl: 'https://images.unsplash.com/photo-1585366119957-e9730b6d0f60?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/lego-falcon-2023.jpg',
     description: 'Największy zestaw LEGO Star Wars. Marzenie kolekcjonerów.',
     funFact: 'Zestaw składa się z ponad 7500 elementów. Jego złożenie zajmuje wprawnemu budowniczemu kilkanaście godzin.'
   },
@@ -686,7 +686,7 @@ export const gameItems: GameItem[] = [
     price: 205990,
     currency: 'PLN',
     category: 'automotive',
-    imageUrl: 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/tesla-2023.jpg',
     description: 'Najpopularniejszy samochód elektryczny na świecie po liftingu.',
     funFact: 'Tesla Model 3 zrewolucjonizowała rynek aut elektrycznych. Wersja Highland z 2023 r. usunęła m.in. dźwignie kierunkowskazów.'
   },
@@ -697,7 +697,7 @@ export const gameItems: GameItem[] = [
     price: 2599,
     currency: 'PLN',
     category: 'tech',
-    imageUrl: 'https://images.unsplash.com/photo-1659284654899-0afdd81a0e1b?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/steamdeck-2023.jpg',
     description: 'Przenośny komputer do gier od Valve.',
     funFact: 'Steam Deck pozwolił grać w "duże" gry PC (jak Cyberpunk 2077) w autobusie czy pociągu.'
   },
@@ -708,7 +708,7 @@ export const gameItems: GameItem[] = [
     price: 2699,
     currency: 'PLN',
     category: 'tech',
-    imageUrl: 'https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/airpods-2023.jpg',
     description: 'Nauszne słuchawki od Apple z wyciszaniem hałasu.',
     funFact: 'Słuchawki te stały się elementem mody (fashion statement), mimo kontrowersji związanych z ich wysoką ceną i etui przypominającym torebkę.'
   },
@@ -719,7 +719,7 @@ export const gameItems: GameItem[] = [
     price: 5499,
     currency: 'PLN',
     category: 'tech',
-    imageUrl: 'https://images.unsplash.com/photo-1579829366248-204fe8413f31?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/dji-2023.jpg',
     description: 'Zaawansowany dron o wadze poniżej 249g.',
     funFact: 'Dzięki wadze poniżej 250g, w wielu krajach można nim latać bez specjalistycznych licencji, co czyni go hitem wśród amatorów.'
   },
@@ -730,7 +730,7 @@ export const gameItems: GameItem[] = [
     price: 720,
     currency: 'PLN',
     category: 'other',
-    imageUrl: 'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?auto=format&fit=crop&w=600&q=80',
+    imageUrl: '/images/netflix-2023.jpg',
     description: 'Roczny koszt najwyższego planu (4K HDR).',
     funFact: 'Miesięczny abonament (60 zł) wydaje się niski, ale rocznie zbiera się kwota, za którą w latach 90. można było przeżyć miesiąc.'
   }
