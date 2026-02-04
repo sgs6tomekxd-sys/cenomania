@@ -6,15 +6,20 @@ import { calculateScore } from './utils/gameLogic';
 import { DarkModeToggle } from './components/DarkModeToggle';
 
 function App() {
-  const [gameState, setGameState] = useState<'start' | 'playing' | 'result' | 'summary'>('start');
+  const [gameState, setGameState] = useState<'start' | 'playing' | 'pass_device' | 'result' | 'summary'>('start');
+  const [gameMode, setGameMode] = useState<'single' | 'multi'>('single');
+  const [playerNames, setPlayerNames] = useState({ p1: 'Gracz 1', p2: 'Gracz 2' });
+  const [currentPlayer, setCurrentPlayer] = useState<'p1' | 'p2'>('p1');
+  const [guesses, setGuesses] = useState<{ p1: number, p2: number }>({ p1: 0, p2: 0 });
+  const [scores, setScores] = useState<{ p1: number, p2: number }>({ p1: 0, p2: 0 });
+  
   const [items, setItems] = useState<GameItem[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [currentScore, setCurrentScore] = useState(0);
-  const [totalScore, setTotalScore] = useState(0);
-  const [lastGuess, setLastGuess] = useState(0);
+  const [currentScore, setCurrentScore] = useState(0); // For single player
+  const [totalScore, setTotalScore] = useState(0); // For single player
   const [streak, setStreak] = useState(0);
   const [highScore, setHighScore] = useState(0);
-  const [coins, setCoins] = useState(5); // System Ekonomii: Start z 5 monetami
+  const [coins, setCoins] = useState(5);
 
   // Load high score
   useEffect(() => {
@@ -34,7 +39,7 @@ function App() {
   }, []);
 
   const startGame = () => {
-    // Reshuffle or just restart
+    // Reshuffle
     const shuffled = [...gameItems];
     for (let i = shuffled.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -42,10 +47,19 @@ function App() {
     }
     setItems(shuffled);
     setCurrentIndex(0);
-    setTotalScore(0);
-    setStreak(0);
-    setCoins(5); // Reset coins on new game
-    setGameState('playing');
+    
+    // Reset state based on mode
+    if (gameMode === 'single') {
+      setTotalScore(0);
+      setStreak(0);
+      setCoins(5);
+      setGameState('playing');
+    } else {
+      setScores({ p1: 0, p2: 0 });
+      setCoins(5); // Shared coins pool or separate? Keeping simple: shared/irrelevant for now
+      setCurrentPlayer('p1');
+      setGameState('playing');
+    }
   };
 
   const handleSpendCoins = (amount: number) => {
@@ -58,37 +72,64 @@ function App() {
 
   const handleGuess = (guess: number) => {
     const item = items[currentIndex];
-    let points = calculateScore(item.price, guess);
     
-    // Streak Bonus logic
-    if (points > 500) {
-      const currentStreak = streak + 1;
-      setStreak(currentStreak);
-      // Bonus for streak: +10% for each streak step
-      if (currentStreak > 1) {
-        points = Math.round(points * (1 + (currentStreak * 0.05)));
+    if (gameMode === 'single') {
+      let points = calculateScore(item.price, guess);
+      
+      // Streak Bonus logic
+      if (points > 500) {
+        const currentStreak = streak + 1;
+        setStreak(currentStreak);
+        if (currentStreak > 1) {
+          points = Math.round(points * (1 + (currentStreak * 0.05)));
+        }
+      } else {
+        setStreak(0);
       }
+
+      // Economy Reward
+      if (points >= 900) setCoins(prev => prev + 2);
+      else if (points >= 500) setCoins(prev => prev + 1);
+
+      setGuesses({ ...guesses, p1: guess }); // Reusing state structure
+      setCurrentScore(points);
+      setTotalScore(prev => prev + points);
+      setGameState('result');
     } else {
-      setStreak(0);
+      // Multiplayer logic
+      if (currentPlayer === 'p1') {
+        setGuesses(prev => ({ ...prev, p1: guess }));
+        setGameState('pass_device');
+      } else {
+        setGuesses(prev => ({ ...prev, p2: guess }));
+        
+        // Calculate scores for both
+        const p1Points = calculateScore(item.price, guesses.p1);
+        const p2Points = calculateScore(item.price, guess);
+        
+        setScores(prev => ({
+          p1: prev.p1 + p1Points,
+          p2: prev.p2 + p2Points
+        }));
+        
+        setGameState('result');
+      }
     }
+  };
 
-    // Economy Reward
-    if (points >= 900) setCoins(prev => prev + 2); // Perfect guess
-    else if (points >= 500) setCoins(prev => prev + 1); // Good guess
-
-    setLastGuess(guess);
-    setCurrentScore(points);
-    setTotalScore(prev => prev + points);
-    setGameState('result');
+  const handlePassDevice = () => {
+    setCurrentPlayer('p2');
+    setGameState('playing');
   };
 
   const nextRound = () => {
     if (currentIndex + 1 < items.length) {
       setCurrentIndex(prev => prev + 1);
+      setCurrentPlayer('p1'); // Reset to P1 for next round
       setGameState('playing');
     } else {
       // Game Over
-      if (totalScore > highScore) {
+      if (gameMode === 'single' && totalScore > highScore) {
         setHighScore(totalScore);
         localStorage.setItem('cenomania_highscore', totalScore.toString());
       }
@@ -138,26 +179,70 @@ function App() {
             </div>
 
             <div className="max-w-xl mx-auto bg-white/60 dark:bg-gray-800/60 backdrop-blur-md rounded-2xl p-6 border border-gray-200 dark:border-gray-700 text-left">
-              <h3 className="text-lg font-black text-gray-800 dark:text-white mb-3 uppercase tracking-wider flex items-center gap-2">
-                <span className="text-xl">📜</span> Zasady Gry
+              <h3 className="text-lg font-black text-gray-800 dark:text-white mb-4 uppercase tracking-wider flex items-center gap-2">
+                <span className="text-xl">🎮</span> Wybierz Tryb Gry
               </h3>
-              <ul className="space-y-3 text-gray-600 dark:text-gray-300 text-sm font-medium">
-                <li className="flex items-start gap-3">
-                  <span className="bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-300 rounded-full w-6 h-6 flex items-center justify-center shrink-0 text-xs font-bold">1</span>
-                  <span>Twoim celem jest odgadnięcie ceny produktu z podanego roku.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="bg-green-100 dark:bg-green-900/50 text-green-600 dark:text-green-300 rounded-full w-6 h-6 flex items-center justify-center shrink-0 text-xs font-bold">2</span>
-                  <span>Im bliżej będziesz, tym więcej punktów zdobędziesz (max 1000 pkt).</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="bg-yellow-100 dark:bg-yellow-900/50 text-yellow-600 dark:text-yellow-300 rounded-full w-6 h-6 flex items-center justify-center shrink-0 text-xs font-bold">3</span>
-                  <span>Za dobre wyniki otrzymujesz <span className="text-yellow-600 dark:text-yellow-400 font-bold">CenoCoins</span>, które możesz wymieniać na podpowiedzi.</span>
-                </li>
-              </ul>
-              <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 text-center">
-                 <p className="text-indigo-600 dark:text-indigo-400 font-bold italic">Miłej zabawy i powodzenia!</p>
+              
+              <div className="flex gap-4 mb-6">
+                <button 
+                  onClick={() => setGameMode('single')}
+                  className={`flex-1 p-4 rounded-xl border-2 transition-all ${gameMode === 'single' ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30' : 'border-transparent bg-white dark:bg-gray-700'}`}
+                >
+                  <div className="text-2xl mb-1">👤</div>
+                  <div className="font-bold text-gray-800 dark:text-white">1 Gracz</div>
+                  <div className="text-xs text-gray-500">Klasyczna rozgrywka</div>
+                </button>
+                
+                <button 
+                  onClick={() => setGameMode('multi')}
+                  className={`flex-1 p-4 rounded-xl border-2 transition-all ${gameMode === 'multi' ? 'border-purple-500 bg-purple-50 dark:bg-purple-900/30' : 'border-transparent bg-white dark:bg-gray-700'}`}
+                >
+                  <div className="text-2xl mb-1">👥</div>
+                  <div className="font-bold text-gray-800 dark:text-white">2 Graczy</div>
+                  <div className="text-xs text-gray-500">Rywalizacja na zmianę</div>
+                </button>
               </div>
+
+              {gameMode === 'multi' && (
+                <div className="grid grid-cols-2 gap-4 mb-4 animate-fade-in">
+                  <div>
+                    <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Gracz 1</label>
+                    <input 
+                      type="text" 
+                      value={playerNames.p1}
+                      onChange={(e) => setPlayerNames(prev => ({...prev, p1: e.target.value}))}
+                      className="w-full p-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-sm font-bold"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Gracz 2</label>
+                    <input 
+                      type="text" 
+                      value={playerNames.p2}
+                      onChange={(e) => setPlayerNames(prev => ({...prev, p2: e.target.value}))}
+                      className="w-full p-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-sm font-bold"
+                    />
+                  </div>
+                </div>
+              )}
+
+              <h3 className="text-sm font-black text-gray-800 dark:text-white mb-2 uppercase tracking-wider flex items-center gap-2 mt-6">
+                <span className="text-xl">📜</span> Zasady
+              </h3>
+              <ul className="space-y-2 text-gray-600 dark:text-gray-300 text-sm font-medium">
+                {gameMode === 'single' ? (
+                  <>
+                    <li className="flex items-start gap-2"><span>•</span><span>Odgadnij cenę produktu z podanego roku.</span></li>
+                    <li className="flex items-start gap-2"><span>•</span><span>Zbieraj punkty i monety na podpowiedzi.</span></li>
+                  </>
+                ) : (
+                  <>
+                    <li className="flex items-start gap-2"><span>•</span><span>Gracze zgadują cenę na zmianę (bez podglądania!).</span></li>
+                    <li className="flex items-start gap-2"><span>•</span><span>Najpierw typuje {playerNames.p1}, potem następuje przekazanie urządzenia.</span></li>
+                    <li className="flex items-start gap-2"><span>•</span><span>Na koniec rundy widzicie oba wyniki.</span></li>
+                  </>
+                )}
+              </ul>
             </div>
 
             <div className="pt-4">
@@ -179,8 +264,32 @@ function App() {
     );
   }
 
+  if (gameState === 'pass_device') {
+    return (
+      <div className="min-h-screen bg-indigo-900 flex items-center justify-center p-4">
+        <div className="bg-white dark:bg-gray-800 p-10 rounded-[2rem] shadow-2xl text-center max-w-md w-full animate-bounce-subtle">
+          <div className="text-6xl mb-6">🤫</div>
+          <h2 className="text-3xl font-black text-gray-800 dark:text-white mb-4">Przekaż urządzenie</h2>
+          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
+            Teraz kolej gracza: <br/>
+            <strong className="text-purple-500 text-2xl block mt-2">{playerNames.p2}</strong>
+          </p>
+          <p className="text-sm text-gray-400 mb-8">Nie podglądaj odpowiedzi poprzednika!</p>
+          
+          <button
+            onClick={handlePassDevice}
+            className="w-full py-4 bg-purple-600 text-white rounded-2xl font-black text-lg hover:bg-purple-700 transition-colors shadow-xl"
+          >
+            Jestem gotowy! 🚀
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   if (gameState === 'summary') {
-    const isNewRecord = totalScore >= highScore && totalScore > 0;
+    const isNewRecord = gameMode === 'single' && totalScore >= highScore && totalScore > 0;
+    const winner = scores.p1 > scores.p2 ? playerNames.p1 : scores.p2 > scores.p1 ? playerNames.p2 : 'Remis';
     
     return (
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center p-4 transition-colors duration-300">
@@ -193,22 +302,45 @@ function App() {
           )}
 
           <h2 className="text-4xl font-black text-gray-800 dark:text-white mb-2">Koniec Gry!</h2>
-          <p className="text-gray-500 dark:text-gray-400 mb-8">Oto Twój wynik końcowy</p>
           
-          <div className="text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mb-8 drop-shadow-sm">
-            {totalScore}
-          </div>
+          {gameMode === 'single' ? (
+            <>
+              <p className="text-gray-500 dark:text-gray-400 mb-8">Oto Twój wynik końcowy</p>
+              <div className="text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mb-8 drop-shadow-sm">
+                {totalScore}
+              </div>
+            </>
+          ) : (
+            <div className="mb-8 mt-6">
+              <p className="text-gray-500 dark:text-gray-400 mb-2">Zwycięzca</p>
+              <div className="text-5xl font-black text-yellow-500 mb-6 drop-shadow-sm">
+                🏆 {winner}
+              </div>
+              <div className="grid grid-cols-2 gap-4 bg-gray-50 dark:bg-gray-700/30 p-4 rounded-2xl">
+                <div>
+                  <p className="text-xs font-bold uppercase text-gray-400">{playerNames.p1}</p>
+                  <p className="text-2xl font-black text-gray-800 dark:text-white">{scores.p1}</p>
+                </div>
+                <div className="border-l border-gray-200 dark:border-gray-600">
+                  <p className="text-xs font-bold uppercase text-gray-400">{playerNames.p2}</p>
+                  <p className="text-2xl font-black text-gray-800 dark:text-white">{scores.p2}</p>
+                </div>
+              </div>
+            </div>
+          )}
 
-          <div className="grid grid-cols-2 gap-4 mb-8">
-            <div className="p-4 bg-gray-50 dark:bg-gray-700/50 rounded-2xl">
-              <p className="text-xs text-gray-400 uppercase font-bold">Średnia na rundę</p>
-              <p className="text-xl font-bold text-gray-800 dark:text-gray-200">{Math.round(totalScore / items.length)}</p>
+          {gameMode === 'single' && (
+            <div className="grid grid-cols-2 gap-4 mb-8">
+              <div className="p-4 bg-gray-50 dark:bg-gray-700/50 rounded-2xl">
+                <p className="text-xs text-gray-400 uppercase font-bold">Średnia na rundę</p>
+                <p className="text-xl font-bold text-gray-800 dark:text-gray-200">{Math.round(totalScore / items.length)}</p>
+              </div>
+              <div className="p-4 bg-gray-50 dark:bg-gray-700/50 rounded-2xl">
+                <p className="text-xs text-gray-400 uppercase font-bold">Rund</p>
+                <p className="text-xl font-bold text-gray-800 dark:text-gray-200">{items.length}</p>
+              </div>
             </div>
-            <div className="p-4 bg-gray-50 dark:bg-gray-700/50 rounded-2xl">
-              <p className="text-xs text-gray-400 uppercase font-bold">Rund</p>
-              <p className="text-xl font-bold text-gray-800 dark:text-gray-200">{items.length}</p>
-            </div>
-          </div>
+          )}
 
           <button
             onClick={startGame}
@@ -220,6 +352,10 @@ function App() {
       </div>
     );
   }
+
+  const handleBackToMenu = () => {
+    setGameState('start');
+  };
 
   const currentItem = items[currentIndex];
   const progressPercent = ((currentIndex) / items.length) * 100;
@@ -234,17 +370,27 @@ function App() {
 
       <header className="max-w-2xl w-full mx-auto flex justify-between items-center mb-6 relative z-10">
         <div>
+          <button 
+            onClick={handleBackToMenu}
+            className="text-xs font-bold text-gray-500 hover:text-gray-800 dark:hover:text-white uppercase tracking-wider mb-1 flex items-center gap-1 transition-colors"
+          >
+            ← Menu
+          </button>
           <h1 className="font-black text-2xl text-gray-800 dark:text-white tracking-tight">Ceno<span className="text-blue-500">Mania</span></h1>
         </div>
         <div className="flex items-center gap-4">
-           <div className="bg-white dark:bg-gray-800 px-4 py-2 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 flex items-center gap-2">
-             <span className="text-xs text-gray-400 uppercase font-bold">Wynik</span>
-             <span className="text-xl font-black text-blue-600 dark:text-blue-400 tabular-nums">{totalScore}</span>
-           </div>
-           <div className="bg-white dark:bg-gray-800 px-4 py-2 rounded-xl shadow-sm border border-yellow-200 dark:border-yellow-700 flex items-center gap-2">
-             <span className="text-xl flex items-center justify-center w-6 h-6 bg-yellow-400 text-yellow-900 rounded-full text-xs font-bold border-2 border-yellow-500 shadow-sm">$</span>
-             <span className="text-xl font-black text-yellow-600 dark:text-yellow-400 tabular-nums">{coins}</span>
-           </div>
+           {gameMode === 'single' && (
+             <>
+              <div className="bg-white dark:bg-gray-800 px-4 py-2 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 flex items-center gap-2">
+                <span className="text-xs text-gray-400 uppercase font-bold">Wynik</span>
+                <span className="text-xl font-black text-blue-600 dark:text-blue-400 tabular-nums">{totalScore}</span>
+              </div>
+              <div className="bg-white dark:bg-gray-800 px-4 py-2 rounded-xl shadow-sm border border-yellow-200 dark:border-yellow-700 flex items-center gap-2">
+                <span className="text-xl flex items-center justify-center w-6 h-6 bg-yellow-400 text-yellow-900 rounded-full text-xs font-bold border-2 border-yellow-500 shadow-sm">$</span>
+                <span className="text-xl font-black text-yellow-600 dark:text-yellow-400 tabular-nums">{coins}</span>
+              </div>
+             </>
+           )}
            <DarkModeToggle />
         </div>
       </header>
@@ -271,6 +417,8 @@ function App() {
             streak={streak}
             coins={coins}
             onSpendCoins={handleSpendCoins}
+            gameMode={gameMode}
+            currentPlayerName={gameMode === 'multi' ? (currentPlayer === 'p1' ? playerNames.p1 : playerNames.p2) : undefined}
           />
         )}
       </main>
@@ -278,9 +426,12 @@ function App() {
       {gameState === 'result' && currentItem && (
         <ResultModal
           item={currentItem}
-          userGuess={lastGuess}
-          score={currentScore}
+          userGuess={gameMode === 'single' ? guesses.p1 : guesses.p2}
+          score={gameMode === 'single' ? currentScore : 0}
           onNext={nextRound}
+          isMulti={gameMode === 'multi'}
+          guesses={guesses}
+          playerNames={playerNames}
         />
       )}
     </div>
