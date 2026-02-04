@@ -132,8 +132,8 @@ export const GameCard: React.FC<GameCardProps> = ({ item, onGuess, streak, coins
              </div>
           </div>
 
-          <div className="absolute bottom-4 left-4 right-4 text-white">
-             <span className="bg-blue-600/90 backdrop-blur-sm px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider shadow-lg">
+          <div className="absolute top-4 left-4 z-20">
+             <span className="bg-blue-600/90 backdrop-blur-sm px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider shadow-lg text-white">
                 {item.category}
              </span>
           </div>
