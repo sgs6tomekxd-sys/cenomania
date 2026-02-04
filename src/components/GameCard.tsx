@@ -7,9 +7,11 @@ interface GameCardProps {
   streak: number;
   coins: number;
   onSpendCoins: (amount: number) => boolean;
+  gameMode?: 'single' | 'multi';
+  currentPlayerName?: string;
 }
 
-export const GameCard: React.FC<GameCardProps> = ({ item, onGuess, streak, coins, onSpendCoins }) => {
+export const GameCard: React.FC<GameCardProps> = ({ item, onGuess, streak, coins, onSpendCoins, gameMode = 'single', currentPlayerName }) => {
   const [guess, setGuess] = useState<string>('');
   const [imgSrc, setImgSrc] = useState(item.imageUrl);
   const [hasError, setHasError] = useState(false);
@@ -98,6 +100,12 @@ export const GameCard: React.FC<GameCardProps> = ({ item, onGuess, streak, coins
 
       <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden border border-gray-100 dark:border-gray-700 transition-colors duration-300">
         <div className="relative h-72 w-full bg-gray-100 dark:bg-gray-900 flex items-center justify-center overflow-hidden group">
+          {currentPlayerName && (
+            <div className="absolute top-0 left-0 w-full z-30 bg-purple-600/90 text-white text-center py-1 backdrop-blur-md">
+              <span className="text-xs font-bold uppercase tracking-widest">Teraz odpowiada</span>
+              <div className="font-black text-lg leading-none pb-1">{currentPlayerName}</div>
+            </div>
+          )}
           {!hasError ? (
             <>
                {/* Tło rozmyte (wypełniacz) */}
@@ -150,35 +158,37 @@ export const GameCard: React.FC<GameCardProps> = ({ item, onGuess, streak, coins
             </p>
           </div>
 
-          {/* Hints Section */}
-          <div className="mb-6">
-             {!activeHint ? (
-               <div className="flex gap-2">
-                 <button 
-                  onClick={() => useHint('range')}
-                  disabled={coins < 2}
-                  className="flex-1 py-2 px-3 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 rounded-xl text-xs font-bold uppercase tracking-wide hover:bg-yellow-200 dark:hover:bg-yellow-900/50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed border border-yellow-200 dark:border-yellow-700 flex items-center justify-center gap-2"
-                >
-                  <span>💡 Zakres</span>
-                  <span className="flex items-center justify-center w-5 h-5 bg-yellow-400 text-yellow-900 rounded-full text-[10px] font-bold border border-yellow-500 shadow-sm">2$</span>
-                </button>
-                <button 
-                  onClick={() => useHint('digit')}
-                  disabled={coins < 3}
-                  className="flex-1 py-2 px-3 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-xl text-xs font-bold uppercase tracking-wide hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed border border-purple-200 dark:border-purple-700 flex items-center justify-center gap-2"
-                >
-                  <span>🔢 Pierwsza cyfra</span>
-                  <span className="flex items-center justify-center w-5 h-5 bg-yellow-400 text-yellow-900 rounded-full text-[10px] font-bold border border-yellow-500 shadow-sm">3$</span>
-                </button>
-               </div>
-             ) : (
-               <div className="bg-green-100 dark:bg-green-900/30 p-3 rounded-xl border border-green-200 dark:border-green-700 animate-fade-in">
-                 <p className="text-green-800 dark:text-green-200 text-sm font-bold text-center">
-                   👀 {activeHint}
-                 </p>
-               </div>
-             )}
-          </div>
+          {/* Hints Section - Only for Single Player */}
+          {gameMode === 'single' && (
+            <div className="mb-6">
+              {!activeHint ? (
+                <div className="flex gap-2">
+                  <button 
+                    onClick={() => useHint('range')}
+                    disabled={coins < 2}
+                    className="flex-1 py-2 px-3 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 rounded-xl text-xs font-bold uppercase tracking-wide hover:bg-yellow-200 dark:hover:bg-yellow-900/50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed border border-yellow-200 dark:border-yellow-700 flex items-center justify-center gap-2"
+                  >
+                    <span>💡 Zakres</span>
+                    <span className="flex items-center justify-center w-5 h-5 bg-yellow-400 text-yellow-900 rounded-full text-[10px] font-bold border border-yellow-500 shadow-sm">2$</span>
+                  </button>
+                  <button 
+                    onClick={() => useHint('digit')}
+                    disabled={coins < 3}
+                    className="flex-1 py-2 px-3 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-xl text-xs font-bold uppercase tracking-wide hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed border border-purple-200 dark:border-purple-700 flex items-center justify-center gap-2"
+                  >
+                    <span>🔢 Pierwsza cyfra</span>
+                    <span className="flex items-center justify-center w-5 h-5 bg-yellow-400 text-yellow-900 rounded-full text-[10px] font-bold border border-yellow-500 shadow-sm">3$</span>
+                  </button>
+                </div>
+              ) : (
+                <div className="bg-green-100 dark:bg-green-900/30 p-3 rounded-xl border border-green-200 dark:border-green-700 animate-fade-in">
+                  <p className="text-green-800 dark:text-green-200 text-sm font-bold text-center">
+                    👀 {activeHint}
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
