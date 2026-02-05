@@ -154,18 +154,30 @@ function App() {
         <div className="flex-grow flex items-center justify-center p-4 relative z-10">
           <div className="max-w-2xl w-full text-center space-y-10 animate-fade-in">
             <div>
-              <h1 className="text-5xl md:text-8xl font-black tracking-tight drop-shadow-xl mb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
-                Ceno<span className="text-orange-400">Mania</span>
-              </h1>
-              <p className="text-gray-500 dark:text-gray-400 font-medium tracking-wide uppercase text-sm">
-                Edycja Polska: 1990 - 2024
-              </p>
+              <div className="w-full max-w-lg mx-auto mb-6 relative hover:scale-105 transition-transform duration-300">
+                <div className="absolute inset-0 bg-blue-500/20 blur-[60px] rounded-full"></div>
+                <img 
+                  src="/images/logo.jpg" 
+                  alt="CenoMania Logo" 
+                  className="relative z-10 w-full h-auto object-contain drop-shadow-2xl rounded-3xl"
+                />
+              </div>
             </div>
 
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-lg mx-auto leading-relaxed font-light">
+            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-lg mx-auto leading-relaxed font-light mb-8">
               Czy wiesz ile kosztowała <strong className="text-gray-900 dark:text-white">Coca-Cola w 1990</strong>? 
               <br/>Albo <strong className="text-gray-900 dark:text-white">litr paliwa w 2005</strong>?
             </p>
+
+            <div className="mb-10">
+              <button
+                onClick={startGame}
+                className="group relative inline-flex items-center justify-center px-10 py-5 text-xl font-black text-white transition-all duration-200 bg-gray-900 dark:bg-white dark:text-gray-900 rounded-full focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-gray-900 hover:scale-105 shadow-2xl w-full md:w-auto"
+              >
+                Rozpocznij Wyzwanie
+                <span className="ml-3 group-hover:translate-x-1 transition-transform">🚀</span>
+              </button>
+            </div>
             
             <div className="grid grid-cols-2 gap-4 max-w-sm mx-auto">
                <div className="bg-white/50 dark:bg-white/5 backdrop-blur-sm p-4 rounded-2xl border border-gray-200 dark:border-gray-700">
@@ -178,7 +190,7 @@ function App() {
                </div>
             </div>
 
-            <div className="max-w-xl mx-auto bg-white/60 dark:bg-gray-800/60 backdrop-blur-md rounded-2xl p-6 border border-gray-200 dark:border-gray-700 text-left">
+            <div className="max-w-xl mx-auto bg-white/60 dark:bg-gray-800/60 backdrop-blur-md rounded-2xl p-6 border border-gray-200 dark:border-gray-700 text-left mt-8">
               <h3 className="text-lg font-black text-gray-800 dark:text-white mb-4 uppercase tracking-wider flex items-center gap-2">
                 <span className="text-xl">🎮</span> Wybierz Tryb Gry
               </h3>
@@ -225,6 +237,9 @@ function App() {
                   </div>
                 </div>
               )}
+            </div>
+
+            <div className="max-w-xl mx-auto bg-white/60 dark:bg-gray-800/60 backdrop-blur-md rounded-2xl p-6 border border-gray-200 dark:border-gray-700 text-left">
 
               <h3 className="text-sm font-black text-gray-800 dark:text-white mb-2 uppercase tracking-wider flex items-center gap-2 mt-6">
                 <span className="text-xl">📜</span> Zasady
@@ -243,16 +258,6 @@ function App() {
                   </>
                 )}
               </ul>
-            </div>
-
-            <div className="pt-4">
-              <button
-                onClick={startGame}
-                className="group relative inline-flex items-center justify-center px-10 py-5 text-xl font-black text-white transition-all duration-200 bg-gray-900 dark:bg-white dark:text-gray-900 rounded-full focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-gray-900 hover:scale-105 shadow-2xl"
-              >
-                Rozpocznij Wyzwanie
-                <span className="ml-3 group-hover:translate-x-1 transition-transform">🚀</span>
-              </button>
             </div>
           </div>
         </div>
@@ -376,7 +381,6 @@ function App() {
           >
             ← Menu
           </button>
-          <h1 className="font-black text-2xl text-gray-800 dark:text-white tracking-tight">Ceno<span className="text-blue-500">Mania</span></h1>
         </div>
         <div className="flex items-center gap-4">
            {gameMode === 'single' && (
