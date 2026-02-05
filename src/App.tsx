@@ -140,10 +140,14 @@ function App() {
   if (gameState === 'start') {
     return (
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300 relative overflow-hidden flex flex-col">
-        {/* Background Elements */}
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-          <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-500/10 rounded-full blur-[100px]"></div>
-          <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-purple-500/10 rounded-full blur-[100px]"></div>
+        {/* Custom Background Image */}
+        <div className="fixed inset-0 z-0">
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat transform scale-105"
+            style={{ backgroundImage: "url('/images/background.jpg')" }}
+          ></div>
+          {/* Overlay for blur and tint */}
+          <div className="absolute inset-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm"></div>
         </div>
 
         {/* Top Bar */}
@@ -366,11 +370,14 @@ function App() {
   const progressPercent = ((currentIndex) / items.length) * 100;
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col py-6 px-4 transition-colors duration-300 overflow-hidden">
-      {/* Background blobs */}
-      <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
-          <div className="absolute top-[20%] right-[10%] w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[120px]"></div>
-          <div className="absolute bottom-[10%] left-[10%] w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-[100px]"></div>
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col py-6 px-4 transition-colors duration-300 overflow-hidden relative">
+      {/* Custom Background Image for Game Screen */}
+      <div className="fixed inset-0 z-0">
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat transform scale-105"
+            style={{ backgroundImage: "url('/images/background.jpg')" }}
+          ></div>
+          <div className="absolute inset-0 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm"></div>
       </div>
 
       <header className="max-w-2xl w-full mx-auto flex justify-between items-center mb-6 relative z-10">
